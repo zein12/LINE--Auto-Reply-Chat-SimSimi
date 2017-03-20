@@ -16,7 +16,22 @@ $replyToken = $client->parseEvents()[0]['replyToken'];
 $message 	= $client->parseEvents()[0]['message'];
 $profil = $client->profil($userId);
 $pesan_datang = $message['text'];
+if (!is_null($events['events'])) {
+	// Loop through each event
+	foreach ($events['events'] as $event) {
+		// Reply only when message sent is in 'text' format
+		if ($event['type'] == 'message' && $event['message']['type'] == 'About') {
+			// Get text sent
+			$text = $event['message']['About'];
+			// Get replyToken
+			$replyToken = $event['replyToken'];
 
+			// Build message to reply back
+			$messages = [
+				'type' => 'About',
+				'text' => 'MJ = ID LINE = zein.jein'
+];
+			
 if($message['type']=='sticker')
 {	
 	$balas = array(
