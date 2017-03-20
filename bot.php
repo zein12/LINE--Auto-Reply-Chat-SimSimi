@@ -16,38 +16,6 @@ $replyToken = $client->parseEvents()[0]['replyToken'];
 $message 	= $client->parseEvents()[0]['message'];
 $profil = $client->profil($userId);
 $pesan_datang = $message['text'];	
-if($messsage['type']=='About')
-{
-	$balas = array(
-			'UserID' => $profil->userId,	
-                                                        'replyToken' => $replyToken,							
-							'messages' => array(
-								array(
-										'type' => 'text',
-									        'text' => 'MJ -> id line = zein.jein'									
-									        									)
-							)
-						);
-		
-	}
-else
-if($messsage['type']=='About')
-	{
-		
-		
-		$balas = array(
-							'UserID' => $profil->userId,
-                                                        'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',
-									        'text' => 'MJ -> id line = zein.jein'
-									)
-							)
-						);
-				
-	}
-
 if($message['type']=='sticker')
 {	
 	$balas = array(
@@ -115,8 +83,40 @@ if($url['result'] != 100)
 						);
 						
 	}
+	if($messsage['type']=='About')
+{
+	$balas = array(
+			'UserID' => $profil->userId,	
+                                                        'replyToken' => $replyToken,							
+							'messages' => array(
+								array(
+										'type' => 'About',
+									        'text' => 'MJ -> id line = zein.jein'									
+									        									)
+							)
+						);
+		
+	}
+else
+if($messsage['type']=='About')
+	{
+		
+		
+		$balas = array(
+							'UserID' => $profil->userId,
+                                                        'replyToken' => $replyToken,														
+							'messages' => array(
+								array(
+										'type' => 'About',
+									        'text' => 'MJ -> id line = zein.jein'
+									)
+							)
+						);
+				
+	}
+
 }
-} 
+
 $result =  json_encode($balas);
 
 file_put_contents('./reply.json',$result);
