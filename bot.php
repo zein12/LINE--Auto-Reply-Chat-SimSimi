@@ -47,7 +47,7 @@ if($messsage['type']=='About')
 						);
 				
 	}
-}
+
 if($message['type']=='sticker')
 {	
 	$balas = array(
@@ -116,7 +116,7 @@ if($url['result'] != 100)
 						
 	}
 }
- 
+} 
 $result =  json_encode($balas);
 
 file_put_contents('./reply.json',$result);
